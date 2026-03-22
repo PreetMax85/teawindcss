@@ -1,0 +1,17 @@
+{
+  "name": "teawindcss",
+  "version": "1.0.0",
+  "description": "A lightweight utility-first CSS engine for the browser",
+  "main": "teawind.js",
+    "files": [
+    "teawind.js",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["css", "utility-first", "dom"],
+  "author": "Preet",
+  "license": "MIT",
+  "type": "commonjs"
+}

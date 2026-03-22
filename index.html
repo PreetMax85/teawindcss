@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en" class="chai-scroll-smooth chai-box-border">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeaWind CSS — Utility-First CSS in Vanilla JS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,500&family=Fira+Code:wght@400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        a { text-decoration: none; color: inherit; }
+    </style>
+</head>
+
+
+<body class="chai-bg-black chai-text-white chai-font-dm-sans chai-leading-relaxed">
+
+<nav class="chai-bg-black chai-flex chai-justify-between chai-items-center chai-p-24
+            chai-border-solid chai-border-w-1 chai-border-black"
+     style="border-bottom-color:#292929;">
+
+    <div class="chai-flex chai-items-center chai-gap-12">
+        <span class="chai-text-3xl">🍵</span>
+        <span class="chai-font-bold chai-text-2xl chai-text-white chai-font-fraunces">
+            TeaWind
+        </span>
+        <span class="chai-font-fira chai-text-xs chai-bg-subtle-dark
+                     chai-text-yellow-light chai-p-4 chai-rounded-lg">
+            v1.0.0
+        </span>
+    </div>
+
+    <div class="chai-flex chai-gap-32 chai-items-center">
+        <a href="#features"  class="chai-text-sm chai-text-slate">Features</a>
+        <a href="#start"     class="chai-text-sm chai-text-slate">Start</a>
+        <a href="#colors"    class="chai-text-sm chai-text-slate">Colors</a>
+        <a href="#utilities" class="chai-text-sm chai-text-slate">Utilities</a>
+        <a href="#demo"      class="chai-text-sm chai-text-slate">Demo</a>
+        <a href="https://npmjs.com/package/teawindcss" target="_blank"
+           class="chai-bg-yellow-light chai-text-black chai-font-bold
+                  chai-text-sm chai-rounded-4xl chai-cursor-pointer chai-p-16">
+            npm →
+        </a>
+    </div>
+
+</nav>
+
+
+<!-- ═══════════════════════════════════════ HERO ════════════════════════════════════════ -->
+<!--
+    chai-font-fraunces  → heading font (no more inline style="font-family:...")
+    chai-leading-tight  → line-height: 1.1  on the big headline
+    chai-leading-relaxed on body paragraph text
+    chai-h-screen       → height: 100vh
+    chai-p-64           → padding: 64px
+    chai-text-6xl       → font-size: 48px
+-->
+<section class="chai-bg-black chai-h-screen chai-flex chai-flex-column
+                chai-items-center chai-justify-center chai-p-64 chai-gap-32">
+
+    <div class="chai-flex chai-flex-column chai-items-center chai-gap-16">
+        <span class="chai-text-4xl">🍵</span>
+        <h1 class="chai-text-6xl chai-font-bold chai-text-yellow-light
+                   chai-text-center chai-uppercase chai-font-fraunces chai-leading-tight">
+            TeaWind CSS
+        </h1>
+        <p class="chai-text-2xl chai-text-slate-light chai-text-center
+                  chai-italic chai-font-fraunces chai-leading-snug">
+            Write
+            <span class="chai-text-white chai-font-fira chai-text-xl">chai-</span>
+            classes. Get instant inline styles.
+            <br>Zero build, zero stress.
+        </p>
+    </div>
+
+    <div class="chai-flex chai-gap-32 chai-flex-wrap chai-justify-center">
+        <div class="chai-flex chai-items-center chai-gap-8">
+            <span class="chai-text-lg">⚡</span>
+            <span class="chai-font-fira chai-text-sm chai-text-slate-light">~1ms init</span>
+        </div>
+        <div class="chai-flex chai-items-center chai-gap-8">
+            <span class="chai-text-lg">🔄</span>
+            <span class="chai-font-fira chai-text-sm chai-text-slate-light">MutationObserver</span>
+        </div>
+        <div class="chai-flex chai-items-center chai-gap-8">
+            <span class="chai-text-lg">📦</span>
+            <span class="chai-font-fira chai-text-sm chai-text-slate-light">Zero dependencies</span>
+        </div>
+        <div class="chai-flex chai-items-center chai-gap-8">
+            <span class="chai-text-lg">🧹</span>
+            <span class="chai-font-fira chai-text-sm chai-text-slate-light">Self-cleaning DOM</span>
+        </div>
+    </div>
+
+    <!-- install pill -->
+    <div class="chai-bg-subtle-dark chai-rounded-4xl chai-p-24
+                chai-flex chai-items-center chai-gap-16 chai-font-fira chai-text-lg">
+        <span class="chai-text-slate">$</span>
+        <span class="chai-text-green-light">npm install teawindcss</span>
+    </div>
+
+    <div class="chai-flex chai-gap-16 chai-flex-wrap chai-justify-center chai-items-center">
+        <a href="#features"
+           class="chai-bg-yellow-light chai-text-black chai-font-bold
+                  chai-text-md chai-rounded-4xl chai-p-20 chai-cursor-pointer">
+            Explore features ↓
+        </a>
+        <a href="#demo" class="chai-text-md chai-text-slate-light">
+            See live demo →
+        </a>
+    </div>
+
+    <p class="chai-font-fira chai-text-xs chai-opacity-25 chai-text-white chai-text-center">
+        // This entire page is styled exclusively with chai- classes
+    </p>
+
+</section>
+
+<div class="chai-bg-subtle-dark chai-h-1 chai-w-full"></div>
+
+
+<!-- ══════════════════════════════════════ FEATURES ═══════════════════════════════════ -->
+<section id="features"
+         class="chai-bg-subtle-dark chai-p-64 chai-flex chai-flex-column
+                chai-items-center chai-gap-48">
+
+    <div class="chai-flex chai-flex-column chai-items-center chai-gap-12">
+        <span class="chai-font-fira chai-text-sm chai-uppercase chai-text-yellow-light">
+            Why TeaWind
+        </span>
+        <h2 class="chai-text-5xl chai-font-bold chai-text-white chai-text-center
+                   chai-font-fraunces chai-leading-tight">
+            CSS without the stress.
+        </h2>
+        <p class="chai-text-xl chai-text-slate-light chai-text-center
+                  chai-italic chai-font-fraunces chai-leading-normal">
+            Whenever styling gets overwhelming — take a sip, write a class, move on.
+        </p>
+    </div>
+
+    <div class="chai-w-full chai-flex chai-flex-wrap chai-gap-24 chai-justify-center">
+
+        <div class="chai-w-320 chai-bg-blue-dark chai-p-40 chai-rounded-2xl chai-shadow-xl
+                    chai-flex chai-flex-column chai-gap-16">
+            <span class="chai-text-3xl">⚡️</span>
+            <h3 class="chai-font-bold chai-text-2xl chai-text-white chai-font-fraunces">
+                ~1ms Initialization
+            </h3>
+            <p class="chai-text-md chai-text-blue-light chai-leading-relaxed">
+                Map() cache — every class resolved once, retrieved instantly.
+                Hundreds of elements, still milliseconds.
+            </p>
+        </div>
+
+        <div class="chai-w-320 chai-bg-purple-dark chai-p-40 chai-rounded-2xl chai-shadow-xl
+                    chai-flex chai-flex-column chai-gap-16">
+            <span class="chai-text-3xl">🔄</span>
+            <h3 class="chai-font-bold chai-text-2xl chai-text-white chai-font-fraunces">
+                MutationObserver
+            </h3>
+            <p class="chai-text-md chai-text-purple-light chai-leading-relaxed">
+                A DOM watchdog fires on every new node. React renders?
+                Styled instantly. No useEffect. No setup.
+            </p>
+        </div>
+
+        <div class="chai-w-320 chai-bg-green-dark chai-p-40 chai-rounded-2xl chai-shadow-xl
+                    chai-flex chai-flex-column chai-gap-16">
+            <span class="chai-text-3xl">🧹</span>
+            <h3 class="chai-font-bold chai-text-2xl chai-text-white chai-font-fraunces">
+                Self-Cleaning DOM
+            </h3>
+            <p class="chai-text-md chai-text-green-light chai-leading-relaxed">
+                Every chai- class disappears after processing.
+                Open DevTools — only clean inline styles remain.
+            </p>
+        </div>
+
+        <div class="chai-w-320 chai-bg-orange-dark chai-p-40 chai-rounded-2xl chai-shadow-xl
+                    chai-flex chai-flex-column chai-gap-16">
+            <span class="chai-text-3xl">🎨</span>
+            <h3 class="chai-font-bold chai-text-2xl chai-text-white chai-font-fraunces">
+                Built-in Palette
+            </h3>
+            <p class="chai-text-md chai-text-orange-light chai-leading-relaxed">
+                Every color has a -light and -dark variant.
+                Handpicked hex codes. No memorization needed.
+            </p>
+        </div>
+
+        <div class="chai-w-320 chai-bg-pink-dark chai-p-40 chai-rounded-2xl chai-shadow-xl
+                    chai-flex chai-flex-column chai-gap-16">
+            <span class="chai-text-3xl">🧠</span>
+            <h3 class="chai-font-bold chai-text-2xl chai-text-white chai-font-fraunces">
+                Smart Dynamic Values
+            </h3>
+            <p class="chai-text-md chai-text-pink-light chai-leading-relaxed">
+                chai-p-24 → padding: 24px.
+                Numbers auto-convert to px. Strings like full pass through unchanged.
+            </p>
+        </div>
+
+        <div class="chai-w-320 chai-bg-slate-dark chai-p-40 chai-rounded-2xl chai-shadow-xl
+                    chai-flex chai-flex-column chai-gap-16">
+            <span class="chai-text-3xl">📦</span>
+            <h3 class="chai-font-bold chai-text-2xl chai-text-white chai-font-fraunces">
+                Zero Dependencies
+            </h3>
+            <p class="chai-text-md chai-text-slate-light chai-leading-relaxed">
+                No PostCSS. No Webpack. No config.
+                One import 'teawindcss' and you're live.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="chai-bg-slate-dark chai-h-1 chai-w-full"></div>
+
+
+<!-- ════════════════════════════════════ QUICK START ══════════════════════════════════ -->
+<section id="start"
+         class="chai-bg-black chai-p-64 chai-flex chai-flex-column
+                chai-items-center chai-gap-48">
+
+    <div class="chai-flex chai-flex-column chai-items-center chai-gap-12">
+        <span class="chai-font-fira chai-text-sm chai-uppercase chai-text-yellow-light">
+            Quick Start
+        </span>
+        <h2 class="chai-text-5xl chai-font-bold chai-text-white chai-text-center
+                   chai-font-fraunces chai-leading-tight">
+            Up in 30 seconds.
+        </h2>
+        <p class="chai-text-xl chai-text-slate-light chai-text-center
+                  chai-font-fraunces chai-italic chai-leading-normal">
+            Three ways to use TeaWind — pick what fits.
+        </p>
+    </div>
+
+    <div class="chai-w-full chai-flex chai-flex-wrap chai-gap-24 chai-justify-center">
+
+        <div class="chai-w-320 chai-bg-subtle-dark chai-p-40 chai-rounded-2xl
+                    chai-flex chai-flex-column chai-gap-16">
+            <span class="chai-bg-yellow-dark chai-text-yellow-light chai-font-fira
+                         chai-text-xs chai-rounded-xl chai-p-8 chai-uppercase">
+                Step 1
+            </span>
+            <h3 class="chai-font-bold chai-text-xl chai-text-white chai-font-fraunces">
+                Install
+            </h3>
+            <div class="chai-bg-black chai-p-20 chai-rounded-xl chai-font-fira chai-text-md">
+                <span class="chai-text-slate">$ </span>
+                <span class="chai-text-green-light">npm install teawindcss</span>
+            </div>
+        </div>
+
+        <div class="chai-w-320 chai-bg-subtle-dark chai-p-40 chai-rounded-2xl
+                    chai-flex chai-flex-column chai-gap-16">
+            <span class="chai-bg-yellow-dark chai-text-yellow-light chai-font-fira
+                         chai-text-xs chai-rounded-xl chai-p-8 chai-uppercase">
+                Step 2
+            </span>
+            <h3 class="chai-font-bold chai-text-xl chai-text-white chai-font-fraunces">
+                Import Once
+            </h3>
+            <div class="chai-bg-black chai-p-20 chai-rounded-xl chai-font-fira
+                        chai-text-md chai-leading-loose">
+                <span class="chai-text-blue-light">import </span>
+                <span class="chai-text-white">'teawindcss'</span>
+                <span class="chai-text-slate">;</span>
+                <br>
+                <span class="chai-text-slate">// auto-initializes. done.</span>
+            </div>
+        </div>
+
+        <div class="chai-w-320 chai-bg-subtle-dark chai-p-40 chai-rounded-2xl
+                    chai-flex chai-flex-column chai-gap-16">
+            <span class="chai-bg-yellow-dark chai-text-yellow-light chai-font-fira
+                         chai-text-xs chai-rounded-xl chai-p-8 chai-uppercase">
+                Step 3
+            </span>
+            <h3 class="chai-font-bold chai-text-xl chai-text-white chai-font-fraunces">
+                Write Classes
+            </h3>
+            <div class="chai-bg-black chai-p-20 chai-rounded-xl chai-font-fira
+                        chai-text-md chai-leading-loose">
+                <span class="chai-text-green-light">chai-flex chai-p-16</span><br>
+                <span class="chai-text-green-light">chai-bg-blue-dark</span><br>
+                <span class="chai-text-green-light">chai-rounded-xl</span>
+            </div>
+        </div>
+
+        <!-- brew() full-width -->
+        <div class="chai-w-full chai-bg-yellow-dark chai-p-40 chai-rounded-2xl
+                    chai-flex chai-flex-column chai-gap-20">
+            <div class="chai-flex chai-justify-between chai-items-center
+                        chai-flex-wrap chai-gap-16">
+                <h3 class="chai-font-bold chai-text-2xl chai-text-white chai-font-fraunces">
+                    Manual Control — brew()
+                </h3>
+                <span class="chai-font-fira chai-text-sm chai-bg-black
+                             chai-text-yellow-light chai-p-8 chai-rounded-xl">
+                    for React / dynamic HTML
+                </span>
+            </div>
+            <div class="chai-bg-black chai-p-24 chai-rounded-xl chai-font-fira
+                        chai-text-md chai-leading-loose">
+                <span class="chai-text-blue-light">import </span>
+                <span class="chai-text-white">{ brew } </span>
+                <span class="chai-text-blue-light">from </span>
+                <span class="chai-text-green-light">'teawindcss'</span>
+                <span class="chai-text-slate">;</span>
+                <br>
+                <span class="chai-text-slate">// Manually process DOM after dynamic renders</span>
+                <br>
+                <span class="chai-text-yellow-light">brew</span>
+                <span class="chai-text-white">()</span>
+                <span class="chai-text-slate">;</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="chai-bg-slate-dark chai-h-1 chai-w-full"></div>
+
+
+<!-- ════════════════════════════════════ COLOR PALETTE ════════════════════════════════ -->
+<section id="colors"
+         class="chai-bg-subtle-dark chai-p-64 chai-flex chai-flex-column
+                chai-items-center chai-gap-48">
+
+    <div class="chai-flex chai-flex-column chai-items-center chai-gap-12">
+        <span class="chai-font-fira chai-text-sm chai-uppercase chai-text-yellow-light">
+            Color System
+        </span>
+        <h2 class="chai-text-5xl chai-font-bold chai-text-white chai-text-center
+                   chai-font-fraunces chai-leading-tight">
+            Every color. Two shades.
+        </h2>
+        <p class="chai-text-xl chai-text-slate-light chai-text-center
+                  chai-italic chai-font-fraunces chai-leading-normal">
+            Append -light or -dark. TeaWind resolves the hex from the palette.
+        </p>
+    </div>
+
+    <div class="chai-w-full chai-flex chai-flex-column chai-gap-12">
+
+        <div class="chai-flex chai-gap-12 chai-items-center chai-w-full">
+            <span class="chai-font-fira chai-text-sm chai-text-slate chai-w-64">red</span>
+            <div class="chai-bg-red-light chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-black chai-opacity-75">
+                    chai-bg-red-light
+                </span>
+            </div>
+            <div class="chai-bg-red-dark chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-white chai-opacity-75">
+                    chai-bg-red-dark
+                </span>
+            </div>
+        </div>
+
+        <div class="chai-flex chai-gap-12 chai-items-center chai-w-full">
+            <span class="chai-font-fira chai-text-sm chai-text-slate chai-w-64">blue</span>
+            <div class="chai-bg-blue-light chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-black chai-opacity-75">
+                    chai-bg-blue-light
+                </span>
+            </div>
+            <div class="chai-bg-blue-dark chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-white chai-opacity-75">
+                    chai-bg-blue-dark
+                </span>
+            </div>
+        </div>
+
+        <div class="chai-flex chai-gap-12 chai-items-center chai-w-full">
+            <span class="chai-font-fira chai-text-sm chai-text-slate chai-w-64">green</span>
+            <div class="chai-bg-green-light chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-black chai-opacity-75">
+                    chai-bg-green-light
+                </span>
+            </div>
+            <div class="chai-bg-green-dark chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-white chai-opacity-75">
+                    chai-bg-green-dark
+                </span>
+            </div>
+        </div>
+
+        <div class="chai-flex chai-gap-12 chai-items-center chai-w-full">
+            <span class="chai-font-fira chai-text-sm chai-text-slate chai-w-64">yellow</span>
+            <div class="chai-bg-yellow-light chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-black chai-opacity-75">
+                    chai-bg-yellow-light
+                </span>
+            </div>
+            <div class="chai-bg-yellow-dark chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-white chai-opacity-75">
+                    chai-bg-yellow-dark
+                </span>
+            </div>
+        </div>
+
+        <div class="chai-flex chai-gap-12 chai-items-center chai-w-full">
+            <span class="chai-font-fira chai-text-sm chai-text-slate chai-w-64">orange</span>
+            <div class="chai-bg-orange-light chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-black chai-opacity-75">
+                    chai-bg-orange-light
+                </span>
+            </div>
+            <div class="chai-bg-orange-dark chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-white chai-opacity-75">
+                    chai-bg-orange-dark
+                </span>
+            </div>
+        </div>
+
+        <div class="chai-flex chai-gap-12 chai-items-center chai-w-full">
+            <span class="chai-font-fira chai-text-sm chai-text-slate chai-w-64">purple</span>
+            <div class="chai-bg-purple-light chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-black chai-opacity-75">
+                    chai-bg-purple-light
+                </span>
+            </div>
+            <div class="chai-bg-purple-dark chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-white chai-opacity-75">
+                    chai-bg-purple-dark
+                </span>
+            </div>
+        </div>
+
+        <div class="chai-flex chai-gap-12 chai-items-center chai-w-full">
+            <span class="chai-font-fira chai-text-sm chai-text-slate chai-w-64">pink</span>
+            <div class="chai-bg-pink-light chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-black chai-opacity-75">
+                    chai-bg-pink-light
+                </span>
+            </div>
+            <div class="chai-bg-pink-dark chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-white chai-opacity-75">
+                    chai-bg-pink-dark
+                </span>
+            </div>
+        </div>
+
+        <div class="chai-flex chai-gap-12 chai-items-center chai-w-full">
+            <span class="chai-font-fira chai-text-sm chai-text-slate chai-w-64">slate</span>
+            <div class="chai-bg-slate-light chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-black chai-opacity-75">
+                    chai-bg-slate-light
+                </span>
+            </div>
+            <div class="chai-bg-slate-dark chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-white chai-opacity-75">
+                    chai-bg-slate-dark
+                </span>
+            </div>
+        </div>
+
+        <!-- subtle-dark standalone -->
+        <div class="chai-flex chai-gap-12 chai-items-center chai-w-full">
+            <span class="chai-font-fira chai-text-sm chai-text-slate chai-w-64">subtle</span>
+            <div class="chai-bg-subtle-dark chai-p-24 chai-rounded-2xl chai-w-full">
+                <span class="chai-font-fira chai-text-sm chai-text-white chai-opacity-75">
+                    chai-bg-subtle-dark — #292929
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="chai-bg-slate-dark chai-h-1 chai-w-full"></div>
+
+
+<!-- ══════════════════════════════════════ UTILITIES ══════════════════════════════════ -->
+<section id="utilities"
+         class="chai-bg-black chai-p-64 chai-flex chai-flex-column
+                chai-items-center chai-gap-48">
+
+    <div class="chai-flex chai-flex-column chai-items-center chai-gap-12">
+        <span class="chai-font-fira chai-text-sm chai-uppercase chai-text-yellow-light">
+            Utilities in Action
+        </span>
+        <h2 class="chai-text-5xl chai-font-bold chai-text-white chai-text-center
+                   chai-font-fraunces chai-leading-tight">
+            See the classes work.
+        </h2>
+    </div>
+
+    <div class="chai-w-full chai-flex chai-flex-column chai-gap-24">
+
+        <!-- TYPOGRAPHY SCALE -->
+        <div class="chai-bg-subtle-dark chai-p-40 chai-rounded-2xl
+                    chai-flex chai-flex-column chai-gap-24">
+            <span class="chai-font-fira chai-text-sm chai-uppercase chai-text-yellow-light">
+                Typography Scale
+            </span>
+
+            <div class="chai-flex chai-flex-column chai-gap-16">
+                <div class="chai-flex chai-items-center chai-gap-20 chai-flex-wrap">
+                    <span class="chai-text-6xl chai-font-bold chai-text-white
+                                 chai-font-fraunces chai-leading-none">
+                        Text 6xl
+                    </span>
+                    <span class="chai-font-fira chai-text-sm chai-bg-black
+                                 chai-text-yellow-light chai-p-8 chai-rounded-lg">
+                        48px — chai-text-6xl
+                    </span>
+                </div>
+                <div class="chai-flex chai-items-center chai-gap-20 chai-flex-wrap">
+                    <span class="chai-text-5xl chai-font-bold chai-text-white
+                                 chai-opacity-75 chai-font-fraunces chai-leading-none">
+                        Text 5xl
+                    </span>
+                    <span class="chai-font-fira chai-text-sm chai-bg-black
+                                 chai-text-yellow-light chai-p-8 chai-rounded-lg">
+                        42px — chai-text-5xl
+                    </span>
+                </div>
+                <div class="chai-flex chai-items-center chai-gap-20 chai-flex-wrap">
+                    <span class="chai-text-4xl chai-text-white chai-opacity-75
+                                 chai-font-fraunces chai-leading-none">
+                        Text 4xl
+                    </span>
+                    <span class="chai-font-fira chai-text-sm chai-bg-black
+                                 chai-text-yellow-light chai-p-8 chai-rounded-lg">
+                        36px — chai-text-4xl
+                    </span>
+                </div>
+                <div class="chai-flex chai-items-center chai-gap-20 chai-flex-wrap">
+                    <span class="chai-text-3xl chai-text-white chai-opacity-50
+                                 chai-leading-none">
+                        Text 3xl
+                    </span>
+                    <span class="chai-font-fira chai-text-sm chai-bg-black
+                                 chai-text-yellow-light chai-p-8 chai-rounded-lg">
+                        30px — chai-text-3xl
+                    </span>
+                </div>
+                <div class="chai-flex chai-items-center chai-gap-20 chai-flex-wrap">
+                    <span class="chai-text-2xl chai-text-white chai-opacity-50
+                                 chai-leading-none">
+                        Text 2xl
+                    </span>
+                    <span class="chai-font-fira chai-text-sm chai-bg-black
+                                 chai-text-yellow-light chai-p-8 chai-rounded-lg">
+                        24px — chai-text-2xl
+                    </span>
+                </div>
+            </div>
+
+            <!-- font families -->
+            <div class="chai-bg-black chai-p-24 chai-rounded-xl
+                        chai-flex chai-flex-column chai-gap-12">
+                <span class="chai-font-fira chai-text-xs chai-uppercase chai-text-slate">
+                    Font Families
+                </span>
+                <div class="chai-flex chai-gap-32 chai-flex-wrap chai-items-center">
+                    <span class="chai-font-dm-sans chai-text-lg chai-text-white">
+                        chai-font-dm-sans
+                    </span>
+                    <span class="chai-font-fraunces chai-text-lg chai-text-orange-light chai-italic">
+                        chai-font-fraunces
+                    </span>
+                    <span class="chai-font-fira chai-text-lg chai-text-green-light">
+                        chai-font-fira
+                    </span>
+                    <span class="chai-sans chai-text-lg chai-text-slate-light">
+                        chai-sans
+                    </span>
+                    <span class="chai-serif chai-text-lg chai-text-slate-light">
+                        chai-serif
+                    </span>
+                    <span class="chai-mono chai-text-lg chai-text-slate-light">
+                        chai-mono
+                    </span>
+                </div>
+            </div>
+
+            <!-- line heights -->
+            <div class="chai-bg-black chai-p-24 chai-rounded-xl
+                        chai-flex chai-flex-column chai-gap-12">
+                <span class="chai-font-fira chai-text-xs chai-uppercase chai-text-slate">
+                    Line Heights
+                </span>
+                <div class="chai-flex chai-gap-24 chai-flex-wrap chai-items-start">
+                    <div class="chai-flex chai-flex-column chai-gap-4">
+                        <span class="chai-font-fira chai-text-xs chai-text-yellow-light">
+                            chai-leading-none
+                        </span>
+                        <p class="chai-text-sm chai-text-slate-light chai-leading-none">
+                            Line one<br>Line two<br>Line three
+                        </p>
+                    </div>
+                    <div class="chai-flex chai-flex-column chai-gap-4">
+                        <span class="chai-font-fira chai-text-xs chai-text-yellow-light">
+                            chai-leading-tight
+                        </span>
+                        <p class="chai-text-sm chai-text-slate-light chai-leading-tight">
+                            Line one<br>Line two<br>Line three
+                        </p>
+                    </div>
+                    <div class="chai-flex chai-flex-column chai-gap-4">
+                        <span class="chai-font-fira chai-text-xs chai-text-yellow-light">
+                            chai-leading-normal
+                        </span>
+                        <p class="chai-text-sm chai-text-slate-light chai-leading-normal">
+                            Line one<br>Line two<br>Line three
+                        </p>
+                    </div>
+                    <div class="chai-flex chai-flex-column chai-gap-4">
+                        <span class="chai-font-fira chai-text-xs chai-text-yellow-light">
+                            chai-leading-relaxed
+                        </span>
+                        <p class="chai-text-sm chai-text-slate-light chai-leading-relaxed">
+                            Line one<br>Line two<br>Line three
+                        </p>
+                    </div>
+                    <div class="chai-flex chai-flex-column chai-gap-4">
+                        <span class="chai-font-fira chai-text-xs chai-text-yellow-light">
+                            chai-leading-loose
+                        </span>
+                        <p class="chai-text-sm chai-text-slate-light chai-leading-loose">
+                            Line one<br>Line two<br>Line three
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- text decorations / transforms -->
+            <div class="chai-bg-black chai-p-24 chai-rounded-xl
+                        chai-flex chai-gap-32 chai-flex-wrap chai-items-center">
+                <span class="chai-font-bold chai-text-white chai-text-lg">bold</span>
+                <span class="chai-font-normal chai-text-white chai-opacity-75 chai-text-lg">
+                    normal
+                </span>
+                <span class="chai-font-thin chai-text-white chai-opacity-50 chai-text-lg">
+                    thin
+                </span>
+                <span class="chai-italic chai-text-slate-light chai-text-lg">italic</span>
+                <span class="chai-underline chai-text-slate-light chai-text-lg">underline</span>
+                <span class="chai-line-through chai-text-slate chai-text-lg">
+                    line-through
+                </span>
+                <span class="chai-uppercase chai-font-fira chai-text-sm chai-text-yellow-light">
+                    uppercase
+                </span>
+            </div>
+        </div>
+
+        <!-- DYNAMIC SPACING -->
+        <div class="chai-bg-subtle-dark chai-p-40 chai-rounded-2xl
+                    chai-flex chai-flex-column chai-gap-20">
+            <span class="chai-font-fira chai-text-sm chai-uppercase chai-text-yellow-light">
+                Dynamic Spacing — any number works
+            </span>
+            <div class="chai-flex chai-gap-16 chai-flex-wrap chai-items-end">
+                <div class="chai-p-4 chai-bg-black chai-rounded-lg">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light">p-4</span>
+                </div>
+                <div class="chai-p-8 chai-bg-black chai-rounded-lg">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light">p-8</span>
+                </div>
+                <div class="chai-p-16 chai-bg-black chai-rounded-lg">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light">p-16</span>
+                </div>
+                <div class="chai-p-24 chai-bg-black chai-rounded-lg">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light">p-24</span>
+                </div>
+                <div class="chai-p-32 chai-bg-black chai-rounded-lg">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light">p-32</span>
+                </div>
+                <div class="chai-p-48 chai-bg-black chai-rounded-lg">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light">p-48</span>
+                </div>
+                <div class="chai-p-64 chai-bg-black chai-rounded-lg">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light">p-64</span>
+                </div>
+            </div>
+            <p class="chai-font-fira chai-text-sm chai-text-slate">
+                chai-p-3, chai-p-7, chai-p-100 — any number, automatic px conversion.
+                Same for chai-m-* and chai-gap-*.
+            </p>
+        </div>
+
+        <!-- BORDER RADIUS -->
+        <div class="chai-bg-subtle-dark chai-p-40 chai-rounded-2xl
+                    chai-flex chai-flex-column chai-gap-20">
+            <span class="chai-font-fira chai-text-sm chai-uppercase chai-text-yellow-light">
+                Border Radius
+            </span>
+            <div class="chai-flex chai-gap-16 chai-flex-wrap chai-items-center">
+                <div class="chai-p-20 chai-rounded-xs chai-bg-black chai-text-center">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light chai-block">xs</span>
+                    <span class="chai-font-fira chai-text-xs chai-text-slate chai-block">2px</span>
+                </div>
+                <div class="chai-p-20 chai-rounded-sm chai-bg-black chai-text-center">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light chai-block">sm</span>
+                    <span class="chai-font-fira chai-text-xs chai-text-slate chai-block">4px</span>
+                </div>
+                <div class="chai-p-20 chai-rounded-md chai-bg-black chai-text-center">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light chai-block">md</span>
+                    <span class="chai-font-fira chai-text-xs chai-text-slate chai-block">6px</span>
+                </div>
+                <div class="chai-p-20 chai-rounded-lg chai-bg-black chai-text-center">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light chai-block">lg</span>
+                    <span class="chai-font-fira chai-text-xs chai-text-slate chai-block">8px</span>
+                </div>
+                <div class="chai-p-20 chai-rounded-xl chai-bg-black chai-text-center">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light chai-block">xl</span>
+                    <span class="chai-font-fira chai-text-xs chai-text-slate chai-block">12px</span>
+                </div>
+                <div class="chai-p-20 chai-rounded-2xl chai-bg-black chai-text-center">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light chai-block">2xl</span>
+                    <span class="chai-font-fira chai-text-xs chai-text-slate chai-block">16px</span>
+                </div>
+                <div class="chai-p-20 chai-rounded-3xl chai-bg-black chai-text-center">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light chai-block">3xl</span>
+                    <span class="chai-font-fira chai-text-xs chai-text-slate chai-block">24px</span>
+                </div>
+                <div class="chai-p-20 chai-rounded-4xl chai-bg-black chai-text-center">
+                    <span class="chai-font-fira chai-text-sm chai-text-yellow-light chai-block">4xl</span>
+                    <span class="chai-font-fira chai-text-xs chai-text-slate chai-block">32px</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SHADOWS -->
+        <div class="chai-bg-slate-light chai-p-40 chai-rounded-2xl
+                    chai-flex chai-flex-column chai-gap-20">
+            <span class="chai-font-fira chai-text-sm chai-uppercase chai-text-slate-dark">
+                Shadows (light background to see depth)
+            </span>
+            <div class="chai-flex chai-gap-20 chai-flex-wrap chai-items-center">
+                <div class="chai-p-24 chai-rounded-xl chai-shadow-xs chai-bg-white chai-text-center">
+                    <span class="chai-font-fira chai-text-sm chai-text-slate-dark chai-block">xs</span>
+                </div>
+                <div class="chai-p-24 chai-rounded-xl chai-shadow-sm chai-bg-white chai-text-center">
+                    <span class="chai-font-fira chai-text-sm chai-text-slate-dark chai-block">sm</span>
+                </div>
+                <div class="chai-p-24 chai-rounded-xl chai-shadow-md chai-bg-white chai-text-center">
+                    <span class="chai-font-fira chai-text-sm chai-text-slate-dark chai-block">md</span>
+                </div>
+                <div class="chai-p-24 chai-rounded-xl chai-shadow-lg chai-bg-white chai-text-center">
+                    <span class="chai-font-fira chai-text-sm chai-text-slate-dark chai-block">lg</span>
+                </div>
+                <div class="chai-p-24 chai-rounded-xl chai-shadow-xl chai-bg-white chai-text-center">
+                    <span class="chai-font-fira chai-text-sm chai-text-slate-dark chai-block">xl</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FLEXBOX -->
+        <div class="chai-bg-subtle-dark chai-p-40 chai-rounded-2xl
+                    chai-flex chai-flex-column chai-gap-20">
+            <span class="chai-font-fira chai-text-sm chai-uppercase chai-text-yellow-light">
+                Flexbox
+            </span>
+            <p class="chai-font-fira chai-text-sm chai-text-slate">
+                chai-flex · chai-justify-between · chai-items-center · chai-gap-16 · chai-flex-wrap
+            </p>
+            <div class="chai-flex chai-justify-between chai-items-center chai-gap-16
+                        chai-flex-wrap chai-bg-black chai-p-24 chai-rounded-xl">
+                <div class="chai-p-20 chai-rounded-xl chai-bg-blue-dark chai-font-bold
+                            chai-text-white chai-text-md chai-font-fira">
+                    chai-bg-blue-dark
+                </div>
+                <div class="chai-p-20 chai-rounded-xl chai-bg-purple-dark chai-font-bold
+                            chai-text-white chai-text-md chai-font-fira">
+                    chai-bg-purple-dark
+                </div>
+                <div class="chai-p-20 chai-rounded-xl chai-bg-green-dark chai-font-bold
+                            chai-text-white chai-text-md chai-font-fira">
+                    chai-bg-green-dark
+                </div>
+                <div class="chai-p-20 chai-rounded-xl chai-bg-orange-dark chai-font-bold
+                            chai-text-white chai-text-md chai-font-fira">
+                    chai-bg-orange-dark
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="chai-bg-slate-dark chai-h-1 chai-w-full"></div>
+
+
+<!-- ══════════════════════════════════════ LIVE DEMO ══════════════════════════════════ -->
+<!--
+    ★★★ DEMO CARD — absolute zero style="" attributes ★★★
+    Font families via chai-font-fraunces / chai-font-fira
+    Line height via chai-leading-*
+    Every single property from a chai- class
+-->
+<section id="demo"
+         class="chai-bg-subtle-dark chai-p-64 chai-flex chai-flex-column
+                chai-items-center chai-gap-48">
+
+    <div class="chai-flex chai-flex-column chai-items-center chai-gap-12">
+        <span class="chai-font-fira chai-text-sm chai-uppercase chai-text-yellow-light">
+            Live Demo
+        </span>
+        <h2 class="chai-text-5xl chai-font-bold chai-text-white chai-text-center
+                   chai-font-fraunces chai-leading-tight">
+            Zero inline styles on this card.
+        </h2>
+        <p class="chai-text-xl chai-text-slate-light chai-text-center
+                  chai-italic chai-font-fraunces chai-leading-normal">
+            Open DevTools after the page loads. Every chai- class will be gone.
+        </p>
+    </div>
+
+    <div class="chai-w-full chai-flex chai-flex-wrap chai-gap-48
+                chai-justify-center chai-items-start">
+
+        <!-- ★ DEMO CARD — chai- only, zero style="" ★ -->
+        <div class="chai-bg-slate-dark chai-p-40 chai-rounded-2xl chai-shadow-xl
+                    chai-flex chai-flex-column chai-items-center chai-gap-20 chai-w-320">
+
+            <div class="chai-bg-yellow-light chai-p-20 chai-rounded-4xl chai-text-3xl">
+                🍵
+            </div>
+
+            <h3 class="chai-text-3xl chai-font-bold chai-text-white
+                       chai-text-center chai-font-fraunces chai-leading-tight">
+                TeaWind CSS
+            </h3>
+
+            <p class="chai-text-lg chai-text-slate-light chai-text-center chai-leading-relaxed">
+                Utility-first styling in Vanilla JS.
+                Zero config. Zero stress.
+            </p>
+
+            <div class="chai-flex chai-gap-8 chai-flex-wrap
+                        chai-justify-center chai-items-center">
+                <span class="chai-p-12 chai-rounded-xl chai-bg-blue-dark
+                             chai-text-white chai-text-sm chai-font-fira chai-uppercase">
+                    npm
+                </span>
+                <span class="chai-p-12 chai-rounded-xl chai-bg-green-dark
+                             chai-text-white chai-text-sm chai-font-fira chai-uppercase">
+                    free
+                </span>
+                <span class="chai-p-12 chai-rounded-xl chai-bg-purple-dark
+                             chai-text-white chai-text-sm chai-font-fira chai-uppercase">
+                    v1.0
+                </span>
+            </div>
+
+            <div class="chai-bg-black chai-p-20 chai-rounded-xl chai-font-fira
+                        chai-text-md chai-text-center chai-text-green-light chai-w-full">
+                npm install teawindcss
+            </div>
+
+        </div>
+
+        <!-- breakdown -->
+        <div class="chai-flex chai-flex-column chai-gap-16 chai-w-320">
+            <p class="chai-font-fira chai-text-sm chai-text-slate">
+                // // Classes on the card ←
+            </p>
+            <div class="chai-bg-black chai-p-24 chai-rounded-xl chai-font-fira
+                        chai-text-sm chai-flex chai-flex-column chai-gap-8">
+                <span class="chai-text-green-light">chai-bg-slate-dark</span>
+                <span class="chai-text-slate">  → background-color: #334155</span>
+                <span class="chai-text-green-light">chai-p-40</span>
+                <span class="chai-text-slate">  → padding: 40px</span>
+                <span class="chai-text-green-light">chai-rounded-2xl</span>
+                <span class="chai-text-slate">  → border-radius: 16px</span>
+                <span class="chai-text-green-light">chai-shadow-xl</span>
+                <span class="chai-text-slate">  → box-shadow: ...</span>
+                <span class="chai-text-green-light">chai-font-fraunces</span>
+                <span class="chai-text-slate">  → font-family: 'Fraunces', serif</span>
+                <span class="chai-text-green-light">chai-leading-relaxed</span>
+                <span class="chai-text-slate">  → line-height: 1.625</span>
+                <span class="chai-text-green-light">chai-bg-yellow-light</span>
+                <span class="chai-text-slate">  → background-color: #fef08a</span>
+            </div>
+            <div class="chai-bg-black chai-p-20 chai-rounded-xl chai-font-fira
+                        chai-text-sm chai-flex chai-flex-column chai-gap-8">
+                <span class="chai-text-yellow-light">→ Inspect in DevTools</span>
+                <span class="chai-text-green-light">→ Zero chai- classes remain</span>
+                <span class="chai-text-green-light">→ Only clean inline styles</span>
+                <span class="chai-text-yellow-light">→ That's TeaWind 🍵</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="chai-bg-slate-dark chai-h-1 chai-w-full"></div>
+
+
+<!-- ══════════════════════════════════════ FOOTER ══════════════════════════════════════ -->
+<footer class="chai-bg-black chai-p-64 chai-flex chai-flex-column
+               chai-items-center chai-text-center chai-gap-20">
+
+    <span class="chai-text-5xl">🍵</span>
+
+    <h3 class="chai-text-4xl chai-font-bold chai-text-yellow-light
+               chai-font-fraunces chai-leading-tight">
+        TeaWind CSS
+    </h3>
+
+    <p class="chai-text-lg chai-text-slate chai-text-center chai-leading-relaxed">
+        Built with patience, a
+        <span class="chai-font-fira chai-text-md chai-text-slate-light">Map()</span>,
+        and way too much chai. Open source under MIT.
+    </p>
+
+    <div class="chai-flex chai-gap-32 chai-items-center">
+        <a href="https://npmjs.com/package/teawindcss" target="_blank"
+           class="chai-font-fira chai-text-md chai-text-yellow-light">npm</a>
+        <span class="chai-text-slate">·</span>
+        <a href="https://github.com" target="_blank"
+           class="chai-font-fira chai-text-md chai-text-yellow-light">github</a>
+    </div>
+
+    <p class="chai-font-fira chai-text-sm chai-opacity-25 chai-text-white">
+        🍵 Take a sip and style on.
+    </p>
+
+</footer>
+
+
+<script src="teawind.js"></script>
+</body>
+</html>
