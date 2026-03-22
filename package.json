@@ -3,14 +3,22 @@
   "version": "1.0.0",
   "description": "A lightweight utility-first CSS engine for the browser",
   "main": "teawind.js",
-    "files": [
+  "files": [
     "teawind.js",
     "README.md"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PreetMax85/teawindcss.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["css", "utility-first", "dom"],
+  "keywords": [
+    "css",
+    "utility-first",
+    "dom"
+  ],
   "author": "Preet",
   "license": "MIT",
   "type": "commonjs"
