@@ -36,11 +36,46 @@ npm install teawindcss
 
 ## ⚡️ Quick Start
 
-### HTML / Vanilla JS
+### HTML / Vanilla JS (no bundler)
 
-Just import the package once. TeaWind auto-initializes and processes the entire DOM on load.
+The simplest way. Load the script directly — no import needed.
+```html
+<script src="./node_modules/teawindcss/teawind.js"></script>
+```
 
+TeaWind auto-initializes on `DOMContentLoaded`. Just write your classes and it handles the rest:
+```html
+<div class="chai-flex chai-p-16 chai-bg-blue-dark chai-rounded-xl">
+  <h1 class="chai-text-3xl chai-font-bold chai-text-white">Hello TeaWind</h1>
+</div>
+```
+
+---
+
+### ES Modules
+
+If you want to use a module script tag or import statement:
+```html
+<script type="module" src="main.js"></script>
+```
 ```javascript
+// main.js
+import 'teawindcss'; // auto-initializes. done.
+```
+
+Or with manual control via `brew()`:
+```javascript
+import { brew } from 'teawindcss';
+brew();
+```
+
+---
+
+### React (Vite / Create React App)
+
+Import once at the root. The built-in `MutationObserver` handles all dynamic renders automatically — no `useEffect` needed anywhere.
+```jsx
+// main.jsx
 import 'teawindcss';
 ```
 
