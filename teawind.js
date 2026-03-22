@@ -73,6 +73,7 @@ const stylesDictionary = {
     "chai-border-red": "border-color: red",
     "chai-border-green": "border-color: green",
     "chai-border-blue": "border-color: blue",
+    "chai-border-subtle": "border-color: #292929",
     "chai-border-solid": "border-style: solid",
     "chai-border-dashed": "border-style: dashed",
     "chai-border-dotted": "border-style: dotted",
@@ -275,6 +276,9 @@ class TeaWind {
 
         const endTime = performance.now();
         console.log(`🍵 TeaWind initialized in ${(endTime - startTime).toFixed(2)}ms. Processed ${parsedCount} utility classes.`);
+        if (typeof document !== 'undefined' && document.body) {
+            document.body.style.visibility = 'visible';
+        }
 
         const observer = new MutationObserver((mutations) => {
             mutations.forEach(mutation => {

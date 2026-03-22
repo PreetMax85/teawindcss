@@ -6,6 +6,8 @@ CSS can be incredibly stressful. Centering a div, fighting specificity, and mana
 
 That's exactly why every class in this library starts with the prefix `chai-`. It's a built-in reminder: whenever you're styling your app and things get overwhelming, take a deep breath, take a sip of **chai (tea)** ☕️, and calm down. We've got the styles covered.
 
+
+🌐 **Live Demo & Full Documentation:** [Visit the TeaWind Showcase](https://preetmax85.github.io/teawindcss/)
 ---
 
 ##  What is TeaWind?
