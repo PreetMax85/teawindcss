@@ -1,8 +1,9 @@
 {
   "name": "teawindcss",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight utility-first CSS engine for the browser",
   "main": "teawind.js",
+  "homepage": "https://preetmax85.github.io/teawindcss",
   "files": [
     "teawind.js",
     "README.md"

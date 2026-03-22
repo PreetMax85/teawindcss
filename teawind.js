@@ -252,6 +252,7 @@ class TeaWind {
         const multipleClasses = [...e.classList];
         multipleClasses.forEach(c => {
             if (!c.startsWith(this.prefix)) return;
+
             const styleString = this.resolveClass(c);
             if (styleString) {
                 e.style.cssText += styleString;
@@ -263,7 +264,6 @@ class TeaWind {
         return count;
     }
 
-    // DOM Scanner and Injector
     init() {
         const startTime = performance.now();
         let parsedCount = 0;
@@ -276,6 +276,7 @@ class TeaWind {
 
         const endTime = performance.now();
         console.log(`🍵 TeaWind initialized in ${(endTime - startTime).toFixed(2)}ms. Processed ${parsedCount} utility classes.`);
+        
         if (typeof document !== 'undefined' && document.body) {
             document.body.style.visibility = 'visible';
         }
